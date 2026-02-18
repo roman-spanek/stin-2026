@@ -4,7 +4,7 @@ class Functions {
     int add(int a, int b) {
 	if (a < LOWEST || a > HIGHEST ||
             b < LOWEST || b > HIGHEST) {
-            System.out.println("Values must be between 10 and 100");
+            throw new IllegalArgumentException("Input values are outside allowed range.");
             return -1;
 	}
         return a + b;

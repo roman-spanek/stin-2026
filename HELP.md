@@ -1,5 +1,5 @@
 # how to
- 1. create spring boot project with spring initializr
+ 1. create spring boot project with spring initializr https://start.spring.io/
  2. generate basic model for client account using copilot
  3. use lombok instead of annoying getter and setter, refresh intellij project
 4. build project by calling maven clean install

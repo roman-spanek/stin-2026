@@ -1,4 +1,4 @@
-package cz.tul.roman.spanek.stin._6.accouting;
+package cz.tul.roman.spanek.stin.pr6.accounting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

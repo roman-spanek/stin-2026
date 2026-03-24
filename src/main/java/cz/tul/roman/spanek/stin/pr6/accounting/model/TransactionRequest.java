@@ -1,4 +1,4 @@
-package cz.tul.roman.spanek.stin._6.accouting.model;
+package cz.tul.roman.spanek.stin.pr6.accounting.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,8 +1,8 @@
-package cz.tul.roman.spanek.stin._6.accouting.service;
+package cz.tul.roman.spanek.stin.pr6.accounting.service;
 
-import cz.tul.roman.spanek.stin._6.accouting.model.ClientAccount;
-import cz.tul.roman.spanek.stin._6.accouting.model.TransactionRequest;
-import cz.tul.roman.spanek.stin._6.accouting.model.TransactionResponse;
+import cz.tul.roman.spanek.stin.pr6.accounting.model.ClientAccount;
+import cz.tul.roman.spanek.stin.pr6.accounting.model.TransactionRequest;
+import cz.tul.roman.spanek.stin.pr6.accounting.model.TransactionResponse;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

@@ -1,8 +1,8 @@
-package cz.tul.roman.spanek.stin._6.accouting.controller;
+package cz.tul.roman.spanek.stin.pr6.accounting.controller;
 
-import cz.tul.roman.spanek.stin._6.accouting.model.TransactionRequest;
-import cz.tul.roman.spanek.stin._6.accouting.model.TransactionResponse;
-import cz.tul.roman.spanek.stin._6.accouting.service.AccountService;
+import cz.tul.roman.spanek.stin.pr6.accounting.model.TransactionRequest;
+import cz.tul.roman.spanek.stin.pr6.accounting.model.TransactionResponse;
+import cz.tul.roman.spanek.stin.pr6.accounting.service.AccountService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

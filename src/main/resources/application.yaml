@@ -1,3 +1,17 @@
 spring:
   application:
     name: accounting
+
+accounting:
+  storage:
+    file-path: data/accounts.json
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/accounting.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{correlationId}] %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{correlationId}] %logger{36} - %msg%n"
+

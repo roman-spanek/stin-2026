@@ -1,0 +1,93 @@
+classDiagram
+direction LR
+
+class AccountingApplication {
+  +main(String[] args) void
+}
+
+class AccountController {
+  -AccountService accountService
+  +processTransaction(TransactionRequest request) ResponseEntity~TransactionResponse~
+  +handleInsufficientFunds(IllegalArgumentException ex) ResponseEntity~String~
+}
+
+class AccountService {
+  -AccountRepository accountRepository
+  -Map~String, ClientAccount~ accounts
+  -boolean accountsLoaded
+  +applyTransaction(TransactionRequest request) TransactionResponse
+  -loadAccountsIfNeeded() void
+}
+
+class AccountRepository {
+  <<interface>>
+  +loadAccounts() Map~String, ClientAccount~
+  +saveAccounts(Map~String, ClientAccount~ accounts) void
+}
+
+class FileAccountRepository {
+  -ObjectMapper objectMapper
+  -Path storagePath
+  +loadAccounts() Map~String, ClientAccount~
+  +saveAccounts(Map~String, ClientAccount~ accounts) void
+  -moveIntoPlace(Path tempFile) void
+}
+
+class ClientAccount {
+  -String accountNumber
+  -Currency currency
+  -BigDecimal amount
+}
+
+class TransactionRequest {
+  -String accountNumber
+  -BigDecimal amount
+  -Currency currency
+  -LocalDate operationDate
+}
+
+class TransactionResponse {
+  -String accountNumber
+  -BigDecimal newBalance
+  -Currency currency
+  -LocalDate operationDate
+  -String message
+}
+
+class Currency {
+  <<enumeration>>
+  CZK
+  EUR
+  USD
+}
+
+class CorrelationIdFilter {
+  +CORRELATION_ID_HEADER String
+  +CORRELATION_ID_MDC_KEY String
+  +doFilterInternal(HttpServletRequest, HttpServletResponse, FilterChain) void
+}
+
+class JacksonConfig {
+  +objectMapper() ObjectMapper
+}
+
+AccountingApplication --> AccountController : starts app context
+AccountController --> AccountService : uses
+AccountController ..> TransactionRequest : consumes
+AccountController ..> TransactionResponse : returns
+
+AccountService --> AccountRepository : uses
+AccountService *-- ClientAccount : manages
+AccountService ..> TransactionRequest : input
+AccountService ..> TransactionResponse : output
+AccountService ..> Currency : uses
+
+FileAccountRepository ..|> AccountRepository : implements
+FileAccountRepository --> ClientAccount : persists
+
+ClientAccount --> Currency : has
+TransactionRequest --> Currency : has
+TransactionResponse --> Currency : has
+
+JacksonConfig ..> FileAccountRepository : provides ObjectMapper bean
+CorrelationIdFilter ..> AccountController : request pipeline

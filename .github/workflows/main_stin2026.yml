@@ -6,7 +6,7 @@ name: Build and deploy JAR app to Azure Web App - STIN2026
 on:
   push:
     branches:
-      - main
+      - mmain
   workflow_dispatch:
 
 jobs:
